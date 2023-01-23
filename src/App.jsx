@@ -3,16 +3,13 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 import Navigator from "./Dashboard/Navigator";
-import Content from "./Dashboard/Content";
 import Header from "./Dashboard/Header";
-import { Router, Routes, Route } from "react-router-dom";
-import AllSongs from "./Pages/AllSongs";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Register from "./component/Register";
 import Login from "./component/Login";
+import AddSong from "./Pages/AddSong";
 
 let theme = createTheme({
   palette: {
@@ -198,9 +195,9 @@ export default function Dashboard() {
           >
             <Routes>
               <Route path="/" element={<Home />}></Route>
-              <Route path="/allsongs" element={<AllSongs />}></Route>
               <Route path="/register" element={<Register />}></Route>
               <Route path="/login" element={<Login />}></Route>
+              <Route path="/addsong" element={<AddSong />}></Route>
             </Routes>
           </Box>
         </Box>

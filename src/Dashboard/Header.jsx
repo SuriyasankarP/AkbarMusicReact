@@ -2,17 +2,10 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import HelpIcon from "@mui/icons-material/Help";
 import IconButton from "@mui/material/IconButton";
-import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
 import Toolbar from "@mui/material/Toolbar";
-import jwt_decode from "jwt-decode";
 import jwt from "jwt-decode";
 import Cookies from "js-cookie";
 
@@ -21,7 +14,7 @@ function Header(props) {
   const Token = Cookies.get("user");
   var Flag = 0;
   if (Token) {
-    Flag = 1;
+    Flag=1;
   }
 
   return (
@@ -48,7 +41,7 @@ function Header(props) {
                   </IconButton>
                 </Grid>
 
-                <Grid item>Suriyasankar</Grid>
+                <Grid item>UserNotLogin</Grid>
               </>
             ) : (
               <>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,8 +11,6 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import axios from "axios";
-import { redirect } from "react-router-dom";
-import jwt from "jwt-decode";
 import Cookies from "js-cookie";
 
 const theme = createTheme();
@@ -61,7 +59,7 @@ function Register() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
+            <Avatar sx={{ m: 1, bgcolor: "primary.main" }}></Avatar>
             <Typography component="h1" variant="h5">
               Welcome Back
             </Typography>

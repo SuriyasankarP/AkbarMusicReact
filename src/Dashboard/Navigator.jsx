@@ -6,22 +6,17 @@ import Box from "@mui/material/Box";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
+import LogoutIcon from "@mui/icons-material/Logout";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleIcon from "@mui/icons-material/People";
-import DnsRoundedIcon from "@mui/icons-material/DnsRounded";
-import PermMediaOutlinedIcon from "@mui/icons-material/PhotoSizeSelectActual";
-import PublicIcon from "@mui/icons-material/Public";
-import SettingsEthernetIcon from "@mui/icons-material/SettingsEthernet";
-import SettingsInputComponentIcon from "@mui/icons-material/SettingsInputComponent";
-import TimerIcon from "@mui/icons-material/Timer";
-import SettingsIcon from "@mui/icons-material/Settings";
-import PhonelinkSetupIcon from "@mui/icons-material/PhonelinkSetup";
+import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
+import LoginIcon from "@mui/icons-material/Login";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import Cookies from "js-cookie";
 import jwt from "jwt-decode";
-
+import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 const isLoggedIn = Cookies.get("user");
 const isAdmin = () => {
   if (jwt(isLoggedIn).UserType == "admin") {
@@ -32,30 +27,21 @@ const isAdmin = () => {
 };
 
 const LogOut = (e) => {
-    e.preventDefault()
+  e.preventDefault();
   Cookies.remove("user");
-  window.location.href = "/"
-
-
+  window.location.href = "/";
 };
 
 const categoryAdmin = [
   {
     id: "Songs",
-    children: [
-      {
-        id: "View All Song",
-        icon: <PeopleIcon />,
-        active: true,
-      },
-      { id: "Add New", icon: <SettingsIcon /> },
-    ],
+    children: [{ id: "Add New Song", icon: <LibraryMusicIcon  />, redirect:"/addsong" }],
   },
   {
     id: "Playlist",
     children: [
-      { id: "View Playlist", icon: <SettingsIcon /> },
-      { id: "Add New", icon: <TimerIcon /> },
+      { id: "View Playlist", icon: <LibraryMusicIcon /> },
+      { id: "Add New Playlist", icon: <LibraryAddIcon /> },
     ],
   },
   {
@@ -63,10 +49,9 @@ const categoryAdmin = [
     children: [
       {
         id: "Logout",
-        icon: <PeopleIcon />,
-        onClick: LogOut ,
-        redirect:'/'
-        
+        icon: <LogoutIcon />,
+        onClick: LogOut,
+        redirect: "/",
       },
     ],
   },
@@ -75,7 +60,7 @@ const categoryAdmin = [
 const NotLogin = [
   {
     id: "Playlist",
-    children: [{ id: "View Playlist", icon: <SettingsIcon /> }],
+    children: [{ id: "All Playlist", icon: <LibraryMusicIcon /> }],
   },
   {
     id: "Account",
@@ -88,7 +73,7 @@ const NotLogin = [
 
       {
         id: "Login",
-        icon: <PeopleIcon />,
+        icon: <LoginIcon />,
         redirect: "/Login",
       },
     ],
@@ -98,17 +83,16 @@ const NotLogin = [
 const NormalUser = [
   {
     id: "Playlist",
-    children: [{ id: "View Playlist", icon: <SettingsIcon /> }],
+    children: [{ id: "My Playlist", icon: <LibraryMusicIcon /> }],
   },
   {
     id: "Account",
     children: [
       {
         id: "Logout",
-        icon: <PeopleIcon />,
+        icon: <LogoutIcon />,
         onClick: LogOut,
-        redirect:'/'
-        
+        redirect: "/",
       },
     ],
   },
@@ -116,18 +100,6 @@ const NormalUser = [
 
 const categories =
   isLoggedIn && isAdmin() ? categoryAdmin : isLoggedIn ? NormalUser : NotLogin;
-
-// () =>{
-//     if(isAdmin){
-//         return categoryAdmin
-//     }
-//      else if(isLoggedIn){
-//         return categoryUser
-//     }else{
-//         return routes
-//     }
-
-// }
 
 const item = {
   py: "2px",
