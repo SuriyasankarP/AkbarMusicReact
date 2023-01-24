@@ -35,7 +35,9 @@ const LogOut = (e) => {
 const categoryAdmin = [
   {
     id: "Songs",
-    children: [{ id: "Add New Song", icon: <LibraryMusicIcon  />, redirect:"/addsong" }],
+    children: [
+      { id: "Add New Song", icon: <LibraryMusicIcon />, redirect: "/addsong" },
+    ],
   },
   {
     id: "Playlist",
@@ -83,7 +85,13 @@ const NotLogin = [
 const NormalUser = [
   {
     id: "Playlist",
-    children: [{ id: "My Playlist", icon: <LibraryMusicIcon /> }],
+    children: [
+      {
+        id: "My Playlist",
+        icon: <LibraryMusicIcon />,
+        redirect: "/playlist",
+      },
+    ],
   },
   {
     id: "Account",

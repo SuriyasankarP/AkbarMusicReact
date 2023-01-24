@@ -10,6 +10,7 @@ import Home from "./Pages/Home";
 import Register from "./component/Register";
 import Login from "./component/Login";
 import AddSong from "./Pages/AddSong";
+import MyPlaylist from "./component/PlayList/MyPlaylist";
 
 let theme = createTheme({
   palette: {
@@ -198,6 +199,8 @@ export default function Dashboard() {
               <Route path="/register" element={<Register />}></Route>
               <Route path="/login" element={<Login />}></Route>
               <Route path="/addsong" element={<AddSong />}></Route>
+              <Route path="/playlist" element={<MyPlaylist />}></Route>
+              
             </Routes>
           </Box>
         </Box>

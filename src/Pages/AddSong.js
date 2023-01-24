@@ -8,11 +8,11 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
-import { redirect } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 
 function AddSong() {
   const ApiUrl = "https://localhost:7123/song";
-
+  const navigate = useNavigate();
   const [Data, setData] = useState({
     Name: "",
     Album: "",
@@ -25,7 +25,6 @@ function AddSong() {
     const newData = { ...Data };
     newData[e.target.id] = e.target.value;
     setData(newData);
-    console.log(newData);
   }
   async function submit(e) {
     e.preventDefault();
@@ -38,8 +37,8 @@ function AddSong() {
         PosterLink: Data.PosterLink,
       })
       .then(function (res) {
-        redirect("/");
-        console.log("Success");
+        alert("Success");
+        navigate("/");
       })
       .catch((error) => {
         alert(error.response.data);

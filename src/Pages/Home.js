@@ -25,8 +25,10 @@ function Home() {
   }, []);
 
   const Delete = async (sv) => {
-    await axios.delete(ApiUrl + "/" + sv.id);
-    setData(Data.filter((p) => p.id !== sv.id));
+    if (window.confirm("Are You Sure Want to Delete ")) {
+      await axios.delete(ApiUrl + "/" + sv.id);
+      setData(Data.filter((p) => p.id !== sv.id));
+    }
   };
   const Token = Cookies.get("user");
   var Flag = 0;
@@ -37,24 +39,33 @@ function Home() {
   }
 
   return (
-    <div className="container" style={{ display: "flex", gap: 20 }}>
+    <div
+      className="container"
+      style={{
+        display: "flex",
+        // justifyContent: "space-between",
+        gap: "20px",
+        flexWrap: "wrap",
+      }}
+    >
       {Data.map((sv) => {
         return (
-          <Card sx={{ maxWidth: 345 }}>
+          <Card sx={{ width: "23%" }}>
             <CardMedia
               component="img"
               alt="green iguana"
               height="140"
               image={sv.posterLink}
+              width="100%"
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography gutterBottom style={{ fontSize: 16 }}>
                 {sv.name}
               </Typography>
-              <Typography variant="h6" color="text.secondary">
+              <Typography style={{ fontSize: 14 }} color="text.secondary">
                 Album : {sv.album}
               </Typography>
-              <Typography variant="h6" color="text.secondary">
+              <Typography style={{ fontSize: 14 }} color="text.secondary">
                 Director : {sv.director}
               </Typography>
             </CardContent>
