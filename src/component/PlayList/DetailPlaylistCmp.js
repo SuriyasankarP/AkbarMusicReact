@@ -37,19 +37,21 @@ function DetailPlaylistCmp() {
       })
     );
     setSongList(ans2);
-    // console.log(detailPlayList);
-    // setSongListresult;
   }
 
   useEffect(() => {
     getSongList(detailPlayList);
   }, [detailPlayList]);
 
-  // console.log(SongList);
-
   return (
     <div>
-      <SongCard detail={SongList} />
+      {SongList ? (
+        <SongCard detail={SongList} />
+      ) : (
+        <div>
+          <h6>Empty</h6>
+        </div>
+      )}
     </div>
   );
 }

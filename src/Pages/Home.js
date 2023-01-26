@@ -4,13 +4,26 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
-import { Button, CardActions } from "@mui/material";
+import {
+  Button,
+  CardActions,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 import Cookies from "js-cookie";
 import jwt from "jwt-decode";
 
 // import axios from "axios";
 
 function Home() {
+  const userId = parseInt(jwt(Cookies.get("user")).UserId);
+  const [Submit, setSubmit] = useState({
+    SongId: 0,
+    PlaylistId: null,
+    UserId: userId,
+  });
   const [Data, setData] = useState([]);
 
   const ApiUrl = "https://localhost:7123/song";
@@ -24,12 +37,66 @@ function Home() {
     getSongs();
   }, []);
 
+  const [PlayList, setPlayList] = useState([]);
+
+  const getApiUrl = `https://localhost:7123/playlist?UserId=${userId}`;
+  async function GetPlayList() {
+    await axios.get(getApiUrl).then((res) => {
+      setPlayList(res.data);
+    });
+  }
+  useEffect(() => {
+    GetPlayList();
+  }, [PlayList]);
+
   const Delete = async (sv) => {
     if (window.confirm("Are You Sure Want to Delete ")) {
       await axios.delete(ApiUrl + "/" + sv.id);
       setData(Data.filter((p) => p.id !== sv.id));
     }
   };
+  const [open, setOpen] = useState(false);
+
+  const getsongId = (sv) => {
+    const ans = { ...Submit, SongId: sv };
+    setSubmit({ ...ans });
+  };
+  // useEffect(() => {
+  //   getsongId(CurrentSongId)
+
+  // }, [open]);
+
+  const handleClickOpen = (sv) => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  // Add To PLaylist Api Call
+
+  function handle(e) {
+    const newData = { ...Submit };
+    newData[e.target.id] = parseInt(e.target.value);
+    setSubmit(newData);
+  }
+  console.log(Submit);
+
+  async function submitPlaylist(e) {
+    e.preventDefault();
+    await axios
+      .post("https://localhost:7123/api/PlayListSongs", {
+        songId: Submit.SongId,
+        playListId: Submit.PlaylistId,
+        userId: Submit.UserId,
+      })
+      .then(function (res) {
+        alert("Successfully Added");
+      })
+      .catch((error) => {
+        alert(error.response.data);
+      });
+  }
   const Token = Cookies.get("user");
   var Flag = 0;
   if (Token) {
@@ -48,9 +115,37 @@ function Home() {
         flexWrap: "wrap",
       }}
     >
+      <Dialog open={open} onClose={handleClose}>
+        <form onSubmit={(e) => submitPlaylist(e)}>
+          <DialogTitle>Add New</DialogTitle>
+
+          <DialogContent>
+            <select
+              onChange={(e) => {
+                handle(e);
+              }}
+              id="PlaylistId"
+            >
+              {PlayList.map((item) => {
+                return (
+                  <option key={item.id} value={item.id}>
+                    {item.playlistName}
+                  </option>
+                );
+              })}
+            </select>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Cancel</Button>
+            <Button type="submit" onClick={handleClose}>
+              Add
+            </Button>
+          </DialogActions>
+        </form>
+      </Dialog>
       {Data.map((sv) => {
         return (
-          <Card sx={{ width: "23%" }}>
+          <Card style={{ flexShrink: 0, flexBasis: "200px" }}>
             <CardMedia
               component="img"
               alt="green iguana"
@@ -82,7 +177,17 @@ function Home() {
                 >
                   Delete
                 </Button>
-              ) : null}
+              ) : (
+                <Button
+                  onClick={() => {
+                    getsongId(sv.id);
+                    handleClickOpen();
+                  }}
+                  size="small"
+                >
+                  Add To Playlist
+                </Button>
+              )}
             </CardActions>
           </Card>
         );
