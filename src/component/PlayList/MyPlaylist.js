@@ -14,16 +14,9 @@ import PlayListCmp from "./PlayListCmp";
 function MyPlaylist() {
   // const [PlayList, setPlayList] = useState([]);
   // const navigate = useNavigate();
-  const userId = parseInt(jwt(Cookies.get("user")).UserId);
-
-  // async function GetPlayList() {
-  //   await axios.get(getApiUrl).then((res) => {
-  //     setPlayList(res.data);
-  //   });
-  // }
-  // useEffect(() => {
-  //   GetPlayList();
-  // }, []);
+    const userId = parseInt(jwt(Cookies.get("user")).UserId);
+  
+  
 
   const ApiUrl = "https://localhost:7123/playlist";
   const [Data, setData] = useState({

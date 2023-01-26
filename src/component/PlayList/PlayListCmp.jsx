@@ -63,7 +63,7 @@ export default function InteractiveList() {
                     </IconButton>
                   }
                 >
-                  <Link to={`detail/${item.id}`}>
+                  <Link to={`detail/${item.id}/${item.playlistName}`}>
                     <ListItemAvatar>
                       <Avatar>
                         <IconButton>

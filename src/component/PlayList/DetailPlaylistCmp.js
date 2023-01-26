@@ -9,6 +9,7 @@ import SongCard from "./SongCard";
 function DetailPlaylistCmp() {
   const userId = parseInt(jwt(Cookies.get("user")).UserId);
   const PlayListId = useParams().id;
+  const PlayListName = useParams().playListName;
 
   const [detailPlayList, setDetailPlayList] = useState([]);
   const [SongList, setSongList] = useState([]);
@@ -45,13 +46,12 @@ function DetailPlaylistCmp() {
 
   return (
     <div>
-      {SongList ? (
-        <SongCard detail={SongList} />
-      ) : (
-        <div>
-          <h6>Empty</h6>
-        </div>
-      )}
+      <h3>{PlayListName}</h3>
+
+      <hr />
+      <br />
+
+      <SongCard detail={SongList} />
     </div>
   );
 }

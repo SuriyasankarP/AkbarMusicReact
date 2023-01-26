@@ -51,15 +51,15 @@ function AddSong() {
         <Card style={{ maxWidth: 750, padding: "20px 5px", margin: "0 auto" }}>
           <CardContent>
             <Typography
-              variant="body"
+              variant="h5"
               color="textSecondary"
-              component="p"
+              component="h5"
               gutterBottom
             >
-              Add New Song...
+              Add New Song
             </Typography>
             <form onSubmit={(e) => submit(e)}>
-              <Grid container spacing={1}>
+              <Grid container spacing={2}>
                 <Grid xs={12} sm={6} item>
                   <TextField
                     onChange={(e) => handle(e)}

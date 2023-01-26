@@ -39,13 +39,13 @@ const categoryAdmin = [
       { id: "Add New Song", icon: <LibraryMusicIcon />, redirect: "/addsong" },
     ],
   },
-  {
-    id: "Playlist",
-    children: [
-      { id: "View Playlist", icon: <LibraryMusicIcon /> },
-      { id: "Add New Playlist", icon: <LibraryAddIcon /> },
-    ],
-  },
+  // {
+  //   id: "Playlist",
+  //   children: [
+  //     { id: "View Playlist", icon: <LibraryMusicIcon /> },
+  //     { id: "Add New Playlist", icon: <LibraryAddIcon /> },
+  //   ],
+  // },
   {
     id: "Account",
     children: [
@@ -60,10 +60,6 @@ const categoryAdmin = [
 ];
 
 const NotLogin = [
-  {
-    id: "Playlist",
-    children: [{ id: "All Playlist", icon: <LibraryMusicIcon /> }],
-  },
   {
     id: "Account",
     children: [

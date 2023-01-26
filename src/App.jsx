@@ -202,7 +202,7 @@ export default function Dashboard() {
               <Route path="/addsong" element={<AddSong />}></Route>
               <Route path="/playlist" element={<MyPlaylist />}></Route>
               <Route
-                path="/playlist/detail/:id"
+                path="/playlist/detail/:id/:playListName"
                 element={<DetailPlaylistCmp />}
               ></Route>
             </Routes>
