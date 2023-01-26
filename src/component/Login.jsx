@@ -38,6 +38,7 @@ function Register() {
       .then(function (response) {
         if (response.data) {
           Cookies.set("user", response.data);
+          alert("Successfully Logged In");
           window.location.href = "/";
         }
       })

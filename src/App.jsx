@@ -11,6 +11,7 @@ import Register from "./component/Register";
 import Login from "./component/Login";
 import AddSong from "./Pages/AddSong";
 import MyPlaylist from "./component/PlayList/MyPlaylist";
+import DetailPlaylistCmp from "./component/PlayList/DetailPlaylistCmp";
 
 let theme = createTheme({
   palette: {
@@ -200,7 +201,10 @@ export default function Dashboard() {
               <Route path="/login" element={<Login />}></Route>
               <Route path="/addsong" element={<AddSong />}></Route>
               <Route path="/playlist" element={<MyPlaylist />}></Route>
-              
+              <Route
+                path="/playlist/detail/:id"
+                element={<DetailPlaylistCmp />}
+              ></Route>
             </Routes>
           </Box>
         </Box>

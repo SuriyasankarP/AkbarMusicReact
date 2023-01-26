@@ -1,23 +1,19 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
+import OpenInNewTwoToneIcon from "@mui/icons-material/OpenInNewTwoTone";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import FolderIcon from "@mui/icons-material/Folder";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Cookies from "js-cookie";
 import jwt from "jwt-decode";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Demo = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -25,13 +21,11 @@ const Demo = styled("div")(({ theme }) => ({
 
 export default function InteractiveList() {
   const [dense, setDense] = React.useState(false);
-  const [secondary, setSecondary] = React.useState(false);
 
   const [PlayList, setPlayList] = React.useState([]);
   //   const navigate = useNavigate();
   const userId = parseInt(jwt(Cookies.get("user")).UserId);
   const getApiUrl = `https://localhost:7123/playlist?UserId=${userId}`;
-
   async function GetPlayList() {
     await axios.get(getApiUrl).then((res) => {
       setPlayList(res.data);
@@ -69,11 +63,16 @@ export default function InteractiveList() {
                     </IconButton>
                   }
                 >
-                  <ListItemAvatar>
-                    <Avatar>
-                      <FolderIcon />
-                    </Avatar>
-                  </ListItemAvatar>
+                  <Link to={`detail/${item.id}`}>
+                    <ListItemAvatar>
+                      <Avatar>
+                        <IconButton>
+                          <OpenInNewTwoToneIcon />
+                        </IconButton>
+                      </Avatar>
+                    </ListItemAvatar>
+                  </Link>
+
                   <ListItemText primary={item.playlistName} />
                 </ListItem>
               );
