@@ -144,12 +144,12 @@ function HomeAuth() {
       </Dialog>
       {Data.map((sv) => {
         return (
-          <Card style={{ flexShrink: 0, flexBasis: "200px" }}>
+          <Card key={sv.id} style={{ flexShrink: 0, flexBasis: "200px" }}>
             <CardMedia
               component="img"
               alt="green iguana"
               height="140"
-              style={{ objectFit: "cover" ,objectPosition: "top"}}
+              style={{ objectFit: "cover", objectPosition: "top" }}
               image={sv.posterLink}
               width="100%"
             />

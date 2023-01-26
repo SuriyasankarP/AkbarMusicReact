@@ -16,7 +16,6 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import Cookies from "js-cookie";
 import jwt from "jwt-decode";
-import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 const isLoggedIn = Cookies.get("user");
 const isAdmin = () => {
   if (jwt(isLoggedIn).UserType == "admin") {

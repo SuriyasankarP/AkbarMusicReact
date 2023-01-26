@@ -55,6 +55,7 @@ function AddSong() {
               color="textSecondary"
               component="h5"
               gutterBottom
+              style={{ marginBottom: "12px" }}
             >
               Add New Song
             </Typography>

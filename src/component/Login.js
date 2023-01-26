@@ -16,7 +16,6 @@ import Cookies from "js-cookie";
 const theme = createTheme();
 
 function Register() {
-  const navigate = useNavigate();
   const ApiUrl = "https://localhost:7123/api/Users/Login";
   const [Data, setData] = useState({
     email: "",

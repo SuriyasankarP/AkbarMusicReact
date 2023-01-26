@@ -4,7 +4,6 @@ import HomeAuth from "./HomeAuth";
 import HomeNormal from "./HomeNormal";
 function Home() {
   const Token = Cookies.get("user");
-  console.log(Token);
   return Token ? (
     <>
       <HomeAuth />

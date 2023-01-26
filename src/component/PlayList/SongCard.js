@@ -16,7 +16,7 @@ function SongCard({ detail }) {
     >
       {detail.map((sv) => {
         return (
-          <Card sx={{ width: "23%" }}>
+          <Card key={sv.id} sx={{ width: "23%" }}>
             <CardMedia
               component="img"
               alt="green iguana"
@@ -40,16 +40,6 @@ function SongCard({ detail }) {
               <Button href={sv.fileLink} size="small">
                 Download
               </Button>
-              {/* {Flag ? (
-                <Button
-                  onClick={() => {
-                    Delete(sv);
-                  }}
-                  size="small"
-                >
-                  Delete
-                </Button>
-              ) : null} */}
             </CardActions>
           </Card>
         );

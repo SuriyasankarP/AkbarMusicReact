@@ -43,7 +43,6 @@ function Register() {
         alert(error.response.data);
       });
   }
-  // const userDetail = jwt(localStorage.getItem("user"));
 
   return (
     <div>

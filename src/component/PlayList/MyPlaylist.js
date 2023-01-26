@@ -6,14 +6,11 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import jwt from "jwt-decode";
 import PlayListCmp from "./PlayListCmp";
 
 function MyPlaylist() {
-  // const [PlayList, setPlayList] = useState([]);
-  // const navigate = useNavigate();
     const userId = parseInt(jwt(Cookies.get("user")).UserId);
   
   

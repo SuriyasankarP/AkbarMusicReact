@@ -23,7 +23,6 @@ export default function InteractiveList() {
   const [dense, setDense] = React.useState(false);
 
   const [PlayList, setPlayList] = React.useState([]);
-  //   const navigate = useNavigate();
   const userId = parseInt(jwt(Cookies.get("user")).UserId);
   const getApiUrl = `https://localhost:7123/playlist?UserId=${userId}`;
   async function GetPlayList() {

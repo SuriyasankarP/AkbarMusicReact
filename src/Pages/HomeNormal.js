@@ -58,7 +58,7 @@ function HomeNormal() {
     >
       {Data.map((sv) => {
         return (
-          <Card style={{ flexShrink: 0, flexBasis: "200px" }}>
+          <Card key={sv.id} style={{ flexShrink: 0, flexBasis: "200px" }}>
             <CardMedia
               component="img"
               alt="green iguana"
